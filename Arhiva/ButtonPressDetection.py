@@ -8,7 +8,7 @@ channels = 1
 dtype = 'int16'
 recorded_frames = []
 
-print("Hold SPACE to record...")
+print("Hold ctrl to record...")
 
 try:
     while True:
@@ -21,8 +21,7 @@ try:
                     recorded_frames.append(audio_chunk)
             print("Recording stopped.")
             
-            # Save the recording
-            audio_data = np.concatenate(recorded_frames, axis=0)
+            audio_data = np.concatenate(recorded_frames, axis=0) # TODO: add audio chunk processing instead of files
             scipy.io.wavfile.write("recorded_output.wav", sample_rate, audio_data)
             print("Saved to recorded_output.wav")
         else:
